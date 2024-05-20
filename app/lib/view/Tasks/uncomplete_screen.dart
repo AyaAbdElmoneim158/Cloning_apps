@@ -9,6 +9,7 @@ import '../../controller/app_state.dart';
 import '../../utils/routes.dart';
 import '../../widgets/button_app.dart';
 import '../form/form_screen.dart';
+import 'widgets/empty_tasks_list.dart';
 import 'widgets/task_item.dart';
 
 class UnCompletedTasks extends StatelessWidget {
@@ -19,83 +20,86 @@ class UnCompletedTasks extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(builder: (context, state) {
       List<TaskModel> tasks =
           BlocProvider.of<AppCubit>(context).unCompletedTasks;
-      return Column(
-        children: [
-          Expanded(
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: tasks.length,
-                  itemBuilder: (context, index) => Dismissible(
-                      key: Key(tasks[index].title!),
-                      direction: DismissDirection.endToStart,
-                      onDismissed: (direction) {
-                        BlocProvider.of<AppCubit>(context)
-                            .removeTask(tasks[index]);
-                      },
-                      background: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFFE6E6),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Row(
-                          children: [
-                            const Spacer(),
-                            IconButton(
-                              icon: const Icon(
-                                FontAwesomeIcons.trash,
-                                color: Colors.red,
+      return tasks.isEmpty
+          ? const EmptyTasksList()
+          : Column(
+              children: [
+                Expanded(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: tasks.length,
+                        itemBuilder: (context, index) => Dismissible(
+                            key: Key(tasks[index].title!),
+                            direction: DismissDirection.endToStart,
+                            onDismissed: (direction) {
+                              BlocProvider.of<AppCubit>(context)
+                                  .removeTask(tasks[index]);
+                            },
+                            background: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFFE6E6),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              onPressed: () {
-                                BlocProvider.of<AppCubit>(context)
-                                    .removeTask(tasks[index]);
+                              child: Row(
+                                children: [
+                                  const Spacer(),
+                                  IconButton(
+                                    icon: const Icon(
+                                      FontAwesomeIcons.trash,
+                                      color: Colors.red,
+                                    ),
+                                    onPressed: () {
+                                      BlocProvider.of<AppCubit>(context)
+                                          .removeTask(tasks[index]);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                            child: TaskItem(
+                              task: tasks[index],
+                              onTap: () {
+                                BlocProvider.of<AppCubit>(context).updateTask(
+                                  TaskModel(
+                                    title: tasks[index].title,
+                                    date: tasks[index].date,
+                                    start: tasks[index].start,
+                                    end: tasks[index].end,
+                                    reminder: tasks[index].reminder,
+                                    repeat: tasks[index].repeat,
+                                    status: "completed",
+                                    favorite: tasks[index].favorite,
+                                  ),
+                                );
                               },
-                            ),
-                          ],
-                        ),
-                      ),
-                      child: TaskItem(
-                        task: tasks[index],
-                        onTap: () {
-                          BlocProvider.of<AppCubit>(context).updateTask(
-                            TaskModel(
-                              title: tasks[index].title,
-                              date: tasks[index].date,
-                              start: tasks[index].start,
-                              end: tasks[index].end,
-                              reminder: tasks[index].reminder,
-                              repeat: tasks[index].repeat,
-                              status: "completed",
-                              favorite: tasks[index].favorite,
-                            ),
-                          );
-                        },
-                        onPressed: () {
-                          BlocProvider.of<AppCubit>(context).updateTask(
-                            TaskModel(
-                              title: tasks[index].title,
-                              date: tasks[index].date,
-                              start: tasks[index].start,
-                              end: tasks[index].end,
-                              reminder: tasks[index].reminder,
-                              repeat: tasks[index].repeat,
-                              status: tasks[index].status,
-                              favorite: "true",
-                            ),
-                          );
-                        },
-                      )))),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: context.height15),
-            child: ButtonApp(
-                color: green,
-                text: "Add a Task",
-                onPressed: () {
-                  AppRoute.push(const FormScreen(), name: "form");
-                }),
-          ),
-        ],
-      );
+                              onPressed: () {
+                                BlocProvider.of<AppCubit>(context).updateTask(
+                                  TaskModel(
+                                    title: tasks[index].title,
+                                    date: tasks[index].date,
+                                    start: tasks[index].start,
+                                    end: tasks[index].end,
+                                    reminder: tasks[index].reminder,
+                                    repeat: tasks[index].repeat,
+                                    status: tasks[index].status,
+                                    favorite: "true",
+                                  ),
+                                );
+                              },
+                            )))),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: context.height15),
+                  child: ButtonApp(
+                      color: green,
+                      text: "Add a Task",
+                      onPressed: () {
+                        AppRoute.push(const FormScreen(), name: "form");
+                      }),
+                ),
+              ],
+            );
     }, listener: (context, state) {
       if (state is AppInitialState) {
         debugPrint('AppInitialState');

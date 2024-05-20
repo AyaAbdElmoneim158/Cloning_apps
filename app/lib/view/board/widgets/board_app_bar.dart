@@ -1,4 +1,6 @@
 import 'package:app/styles/dimensions.dart';
+import 'package:app/utils/routes.dart';
+import 'package:app/view/schedule/schedule_screen.dart';
 import 'package:flutter/material.dart';
 
 AppBar getAppBar(BuildContext context) {
@@ -12,7 +14,7 @@ AppBar getAppBar(BuildContext context) {
       IconButton(
         icon: const Icon(Icons.table_view_outlined),
         onPressed: () {
-          // AppRoute.push(const ScheduleScreen());
+          AppRoute.push(const ScheduleScreen());
         },
       ),
     ],

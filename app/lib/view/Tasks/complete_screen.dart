@@ -1,7 +1,7 @@
 import 'package:app/controller/app_cubit.dart';
 import 'package:app/controller/app_state.dart';
 import 'package:app/styles/dimensions.dart';
-import 'package:app/view/Tasks/widgets/task_item.dart';
+import 'package:app/view/tasks/widgets/task_item.dart';
 import 'package:app/widgets/button_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
