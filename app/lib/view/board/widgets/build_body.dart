@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../Tasks/all_screen.dart';
+import '../../Tasks/complete_screen.dart';
+import '../../Tasks/favorite_screen.dart';
+import '../../Tasks/uncomplete_screen.dart';
+
 class BuildBody extends StatelessWidget {
   const BuildBody({Key? key}) : super(key: key);
 
@@ -8,14 +13,10 @@ class BuildBody extends StatelessWidget {
     return const TabBarView(
       physics: NeverScrollableScrollPhysics(),
       children: [
-        // AllTasks(),
-        // UnCompletedTasks(),
-        // CompletedTasks(),
-        // FavoriteTasks(),
-        Center(child: Text("AllTasks")),
-        Center(child: Text("UnCompletedTasks")),
-        Center(child: Text("CompletedTasks")),
-        Center(child: Text("FavoriteTasks")),
+        AllTasks(),
+        UnCompletedTasks(),
+        CompletedTasks(),
+        FavoriteTasks(),
       ],
     );
   }
