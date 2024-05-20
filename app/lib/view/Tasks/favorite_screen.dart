@@ -6,7 +6,9 @@ import '../../../styles/colors.dart';
 import '../../../model/task_model.dart';
 import '../../controller/app_cubit.dart';
 import '../../controller/app_state.dart';
+import '../../utils/routes.dart';
 import '../../widgets/button_app.dart';
+import '../form/form_screen.dart';
 import 'widgets/empty_tasks_list.dart';
 import 'widgets/task_item.dart';
 
@@ -93,7 +95,7 @@ class FavoriteTasks extends StatelessWidget {
                       color: green,
                       text: "Add a Task",
                       onPressed: () {
-                        // AppRoute.push(const FormScreen(), name: "form");
+                        AppRoute.push(const FormScreen(), name: "form");
                       }),
                 ),
               ],

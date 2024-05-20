@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../styles/colors.dart';
 import '../../../model/task_model.dart';
+import '../../utils/routes.dart';
+import '../form/form_screen.dart';
 import 'widgets/empty_tasks_list.dart';
 
 class CompletedTasks extends StatelessWidget {
@@ -93,7 +95,7 @@ class CompletedTasks extends StatelessWidget {
                       color: green,
                       text: "Add a Task",
                       onPressed: () {
-                        // AppRoute.push(const FormScreen(), name: "form");
+                        AppRoute.push(const FormScreen(), name: "form");
                       }),
                 ),
               ],
