@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: Scaffold(
+        body: Center(child: Text("Calculator app ➗")),
+      ),
     );
   }
 }
