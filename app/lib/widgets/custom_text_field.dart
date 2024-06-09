@@ -25,6 +25,11 @@ class CustomTextField extends StatelessWidget {
         disabledBorder: outlineInputBorder,
         fillColor: AppColors.primaryColor,
         filled: true,
+        hintText: "Enter expression",
+        hintStyle: const TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

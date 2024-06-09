@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../controller/calculator_controller.dart';
 import '../utils/colors.dart';
 
 class EqualBtn extends StatelessWidget {
@@ -9,7 +11,8 @@ class EqualBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Provider.of<CalculatorController>(context, listen: false)
+          .onTapBtn("="),
       child: Container(
         height: 160,
         width: 70,

@@ -1,5 +1,8 @@
 import 'package:app/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../controller/calculator_controller.dart';
 
 class CalculatorBtn extends StatelessWidget {
   const CalculatorBtn({
@@ -13,7 +16,8 @@ class CalculatorBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Provider.of<CalculatorController>(context, listen: false)
+          .onTapBtn(label),
       child: Material(
         elevation: 3,
         color: AppColors.primaryColor,
