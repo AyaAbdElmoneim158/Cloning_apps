@@ -12,9 +12,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
-  function_tree: ^0.8.13
-  lottie: ^3.1.2
-  provider: ^6.0.5
 
 dev_dependencies:
   flutter_lints: ^3.0.0
