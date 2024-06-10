@@ -1,3 +1,4 @@
+import 'package:app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(child: Text("Bmi app ")),
-      ),
+      home: SplashScreen(),
     );
   }
 }
