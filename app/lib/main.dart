@@ -1,8 +1,8 @@
-import 'package:app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/calculator_controller.dart';
+import 'screens/splash_screen.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
-        home: const HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
