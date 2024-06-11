@@ -1,6 +1,4 @@
-import 'package:app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -11,11 +9,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Bmi app',
+    return MaterialApp(
+      title: 'App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const SplashScreen(),
+      home: const Scaffold(),
     );
   }
 }
