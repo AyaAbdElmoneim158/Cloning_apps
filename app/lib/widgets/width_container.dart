@@ -1,6 +1,8 @@
 import 'package:app/utils/styles.dart';
 import 'package:app/widgets/addition_or_subtraction_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controller/app_controller.dart';
 
 class WidthContainer extends StatelessWidget {
   const WidthContainer({
@@ -9,6 +11,8 @@ class WidthContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppController bmiController = Get.put(AppController());
+
     return Expanded(
       child: Container(
         height: double.infinity,
@@ -19,12 +23,22 @@ class WidthContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text("Width", style: AppStyles.font15GrayMedium),
-            Text("70", style: AppStyles.font64WhiteSemiBold),
-            const Row(
+            Obx(
+              () => Text(
+                bmiController.width.value.toString(),
+                style: AppStyles.font64WhiteSemiBold,
+              ),
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AdditionOrSubtractionBtn(icon: Icons.minimize),
-                AdditionOrSubtractionBtn(),
+                AdditionOrSubtractionBtn(
+                  icon: Icons.minimize,
+                  onTap: () => bmiController.width.value--,
+                ),
+                AdditionOrSubtractionBtn(
+                  onTap: () => bmiController.width.value++,
+                ),
               ],
             )
           ],

@@ -1,5 +1,7 @@
 import 'package:app/screens/result_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controller/app_controller.dart';
 import '../utils/Colors.dart';
 import '../utils/styles.dart';
 import '../widgets/age_container.dart';
@@ -14,6 +16,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppController bmiController = Get.put(AppController());
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.bgColor,
@@ -47,12 +51,8 @@ class HomeScreen extends StatelessWidget {
               CustomBtn(
                 label: "Lets Go",
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ResultScreen(),
-                    ),
-                  );
+                  bmiController.calculateBmi();
+                  Get.to(const ResultScreen());
                 },
               ),
             ],

@@ -3,6 +3,7 @@
         "autofocus",
         "datetime",
         "fluttertoast",
+        "Getx",
         "mipmap",
         "Notifiy",
         "rxdart",

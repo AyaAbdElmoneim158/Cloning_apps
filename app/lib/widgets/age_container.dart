@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/styles.dart';
 import 'addition_or_subtraction_btn.dart';
+import 'package:get/get.dart';
+import '../controller/app_controller.dart';
 
 class AgeContainer extends StatelessWidget {
   const AgeContainer({
@@ -9,6 +11,8 @@ class AgeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppController bmiController = Get.put(AppController());
+
     return Expanded(
       child: Container(
         height: double.infinity,
@@ -19,12 +23,22 @@ class AgeContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text("Age", style: AppStyles.font15GrayMedium),
-            Text("23", style: AppStyles.font64WhiteSemiBold),
-            const Row(
+            Obx(
+              () => Text(
+                bmiController.age.value.toString(),
+                style: AppStyles.font64WhiteSemiBold,
+              ),
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AdditionOrSubtractionBtn(icon: Icons.minimize),
-                AdditionOrSubtractionBtn(),
+                AdditionOrSubtractionBtn(
+                  icon: Icons.minimize,
+                  onTap: () => bmiController.age.value--,
+                ),
+                AdditionOrSubtractionBtn(
+                  onTap: () => bmiController.age.value++,
+                ),
               ],
             )
           ],

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../utils/Colors.dart';
 import '../utils/styles.dart';
 import '../widgets/gender_btn.dart';
+import 'package:get/get.dart';
+import '../controller/app_controller.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppController bmiController = Get.put(AppController());
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.bgColor,
@@ -29,16 +32,26 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     CircularPercentIndicator(
                       animationDuration: 1000,
-                      footer:
-                          Text("Under width", style: AppStyles.font30BlueBold),
+                      footer: Text(
+                        bmiController.bmiStatus.value,
+                        style: AppStyles.font30BlueBold!.copyWith(
+                          color: bmiController.colorStatus.value,
+                        ),
+                      ),
                       radius: 130,
                       lineWidth: 30,
                       animation: true,
                       circularStrokeCap: CircularStrokeCap.round,
-                      percent: 65 / 100,
-                      center: Text("105", style: AppStyles.font60BlueBold),
-                      progressColor: AppColors.primaryColor,
-                      backgroundColor: AppColors.primaryColor.withOpacity(0.2),
+                      percent: bmiController.bmiTemp.value / 100,
+                      center: Text(
+                        '${bmiController.bmi.value}%',
+                        style: AppStyles.font60BlueBold!.copyWith(
+                          color: bmiController.colorStatus.value,
+                        ),
+                      ),
+                      progressColor: bmiController.colorStatus.value,
+                      backgroundColor:
+                          bmiController.colorStatus.value.withOpacity(0.2),
                     ),
                     Container(
                       decoration: AppStyles.containerInfoDecoration,
@@ -53,7 +66,7 @@ class ResultScreen extends StatelessWidget {
               CustomBtn(
                 label: "Find Out More",
                 onPressed: () {
-                  Navigator.pop(context);
+                  Get.back();
                 },
               ),
             ],
