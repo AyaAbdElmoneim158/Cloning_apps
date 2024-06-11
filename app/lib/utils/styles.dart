@@ -25,6 +25,10 @@ class AppStyles {
     color: AppColors.containerBoxColor,
   );
 
+  static Decoration? containerInfoDecoration = BoxDecoration(
+    color: AppColors.containerBoxColor,
+    borderRadius: BorderRadius.circular(10),
+  );
 //!  TextStyle - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   static TextStyle? font15WhiteMedium = const TextStyle(
     fontSize: 15,
@@ -52,5 +56,17 @@ class AppStyles {
     color: AppColors.whiteColor,
     fontWeight: FontWeight.w600,
     fontSize: 64,
+  );
+
+  static TextStyle? font30BlueBold = const TextStyle(
+    color: AppColors.primaryColor,
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle? font60BlueBold = const TextStyle(
+    color: AppColors.primaryColor,
+    fontSize: 60,
+    fontWeight: FontWeight.bold,
   );
 }

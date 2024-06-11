@@ -8,17 +8,19 @@ class CustomBtn extends StatelessWidget {
     required this.label,
     this.labelColor = AppColors.whiteColor,
     this.backgroundColor,
+    this.onPressed,
   });
   final String label;
   final Color labelColor;
   final Color? backgroundColor;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: AppStyles.elevatedButton(
             backgroundColor: backgroundColor ?? AppColors.primaryColor),
         child: Text(

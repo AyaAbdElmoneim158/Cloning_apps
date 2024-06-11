@@ -1,3 +1,4 @@
+import 'package:app/screens/result_screen.dart';
 import 'package:flutter/material.dart';
 import '../utils/Colors.dart';
 import '../utils/styles.dart';
@@ -18,14 +19,14 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: AppColors.bgColor,
         body: Padding(
           padding: AppStyles.defaultPadding,
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              WelcomeText(),
-              SizedBox(height: 32),
-              GenderBtns(),
-              SizedBox(height: 32),
-              Expanded(
+              const WelcomeText(),
+              const SizedBox(height: 32),
+              const GenderBtns(),
+              const SizedBox(height: 32),
+              const Expanded(
                 child: Row(
                   children: [
                     HeightContainer(),
@@ -42,9 +43,17 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               CustomBtn(
                 label: "Lets Go",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResultScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
