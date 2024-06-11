@@ -10,10 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp(
+      title: 'Bmi app',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      theme: ThemeData.dark(),
+      home: const SplashScreen(),
     );
   }
 }

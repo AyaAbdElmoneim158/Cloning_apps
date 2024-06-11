@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/Colors.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -30,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       body: Center(
         child: Image.asset(
           'assets/bmi.png',
